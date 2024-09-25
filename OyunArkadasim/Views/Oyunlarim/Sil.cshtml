@@ -1,0 +1,30 @@
+﻿@model Oyunlarim
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="border p-3 mt-5">
+                <h2>Oyunu Sil</h2>
+                <hr />
+                <form method="post">
+                    <input asp-for="Id" hidden />
+                    <div class="mb-3">
+                        <label asp-for="UserId" class="p-0"></label>
+                        <input asp-for="UserId" disabled class="form-control" />
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Id" class="form-label"> </label>
+                        <select asp-for="Id" asp-items="ViewBag.OyunList" class="form-select" required>
+                        </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-md btn-primary" style="width:100%"> Oyunu Sil</button>
+                        <a asp-controller="Oyunlarim" asp-action="Index" class="btn btn-md btn-primary mt-2" style="width:100%">Oyunlarıma Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

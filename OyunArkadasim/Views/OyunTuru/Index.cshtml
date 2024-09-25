@@ -1,0 +1,23 @@
+﻿@model List<OyunTuru>
+
+
+<h1>Oyun Türleri</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-dark">
+            <th>Id</th>
+            <th>Oyun Türü</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var oyunTuru in Model)
+        {
+            <tr class="table-dark">
+                <td>@oyunTuru.TurId</td>
+                <td>@oyunTuru.OyunTuruAdi</td>
+               
+            </tr>
+        }
+    </tbody>
+</table>

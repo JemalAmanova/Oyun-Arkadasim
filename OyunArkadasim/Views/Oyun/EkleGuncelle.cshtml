@@ -1,0 +1,61 @@
+﻿@model Oyun
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="border p-3 mt-5">
+                <h2 class="text-primary">@(Model == null ? "İlan Ver" : "Güncelle")</h2>
+                <hr />
+                <form method="post" enctype="multipart/form-data">
+                    <input asp-for="ResimUrl" hidden />
+                    <div class="mb-3">
+                        <label asp-for="OyunAdi" class="p-0"></label>
+                        <input asp-for="OyunAdi" class="form-control" />
+                        <span asp-validation-for="OyunAdi" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TurId" class="form-label">Oyun Türü</label>
+                        <select asp-for="TurId" asp-items="ViewBag.OyunTuruList" class="form-select" required>
+                        </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="OyuncuSayisi" class="p-0">Oyuncu Sayısı</label>
+                        <input type="number" asp-for="OyuncuSayisi" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BulusmaZamani" class="p-0">Buluşma Zamanı</label>
+                        <input type="datetime-local" asp-for="BulusmaZamani" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ResimUrl" class="p-0">Resim</label>
+                        <input type="file" name="file" class="form-control" />
+                    </div>
+
+
+                    @if (Model != null)
+                    {
+                    <div class="mb-3">
+                        <img src="@Model.ResimUrl" width="100%" height="200px"/>
+
+                    </div>
+                    }
+                    
+
+                    <div class="mb-3">
+                        @if (Model != null)
+                        {
+                            <button type="submit" class="btn btn-md btn-primary" style="width:100%">Güncelle</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-md btn-primary" style="width:100%">İlan Verr</button>
+                        }
+
+                        <a asp-controller="Oyun" asp-action="Index" class="btn btn-md btn-primary mt-2" style="width:100%">Oyunlara Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

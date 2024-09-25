@@ -1,0 +1,31 @@
+﻿@model List<Oyun>
+
+<h1>Oyunlar</h1>
+<div class="row">
+    @foreach (var oyun in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@oyun.ResimUrl" class="card-img-top" alt="Oyun Resmi">
+                <div class="card-body">
+                    <h5 class="card-title">Oyun Türü: @oyun.OyunTuru.OyunTuruAdi</h5>
+                    <p class="card-text">Oyun Adı: @oyun.OyunAdi</p>
+                    <p class="card-text">Buluşma Zamanı: @oyun.BulusmaZamani</p>
+                    <p class="card-text">Oyuncu Sayısı: @oyun.OyuncuSayisi</p>
+                    <div class="btn-group" role="group">
+                        <form asp-controller="Oyunlarim" asp-action="Katil" method="post">
+                            <input type="hidden" name="OyunId" value="@oyun.Id" />
+                            <button type="submit" class="btn btn-primary" style="background-color: green; border-color: green;">Katıl</button>
+                        </form>
+                        <form asp-controller="Oyun" asp-action="EkleGuncelle" asp-route-id="@oyun.Id" method="get">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </form>
+                        <form asp-controller="Oyun" asp-action="Sil" asp-route-id="@oyun.Id" method="post">
+                            <button type="submit" class="btn btn-primary" style="background-color: red; border-color: red;">Sil</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

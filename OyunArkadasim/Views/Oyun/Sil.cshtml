@@ -1,0 +1,37 @@
+﻿@model Oyun
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="border p-3 mt-5">
+                <h2>Sil</h2>
+                <hr />
+                <form method="post">
+                    <input asp-for="Id" hidden />
+                    <div class="mb-3">
+                        <label asp-for="OyunAdi" class="p-0"></label>
+                        <input asp-for="OyunAdi" disabled class="form-control" />
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="OyunTuru" class="p-0">Oyun Türü</label>
+                        <input asp-for="OyunTuru" disabled class="form-control" />
+                           
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="OyuncuSayisi" class="p-0">Oyuncu Sayısı</label>
+                        <input type="number" asp-for="OyuncuSayisi" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="BulusmaZamani" class="p-0">Buluşma Zamanı</label>
+                        <input type="datetime-local" asp-for="BulusmaZamani" disabled class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-md btn-primary" style="width:100%"> Oyunu Sil</button>
+                        <a asp-controller="Oyun" asp-action="Index" class="btn btn-md btn-primary mt-2" style="width:100%">Oyunlara Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

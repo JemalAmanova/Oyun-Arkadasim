@@ -1,0 +1,54 @@
+﻿@model Oyunlarim
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="border p-3 mt-5">
+                <h2 class="text-primary">@(Model == null ? "İlan Ver" : "Güncelle")</h2>
+                <hr />
+                <form method="post" enctype="multipart/form-data">
+
+                    <div class="mb-3 text-center">
+                        <!-- text-center ekleyerek içeriği ortaladık -->
+                        @if (Model != null)
+                        {
+                            <!-- Resmi büyütmek ve ortalamak için margin ve text-align: center ekledik -->
+                            <img src="@Model.Oyun.ResimUrl" width="350px" alt="Oyun Resmi"
+                                 style="margin: 0 auto; display: block; border-radius: 7px; border: 1px solid #bbb9b9;" />
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="UserId" class="p-0"></label>
+                        <input asp-for="UserId" class="form-control" />
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="OyunId" class="form-label">Oyun Türü</label>
+                        <select asp-for="OyunId" asp-items="ViewBag.OyunList" class="form-select" required>
+                        </select>
+                    </div>
+
+                    
+                    }
+                    
+
+                    <div class="mb-3">
+                        @if (Model != null)
+                        {
+                            <button type="submit" class="btn btn-md btn-primary" style="width:100%">Güncelle</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-md btn-primary" style="width:100%">İlan Verr</button>
+                        }
+
+                        <a asp-controller="Oyun" asp-action="Index" class="btn btn-md btn-primary mt-2" style="width:100%">Oyunlara Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
